@@ -17,7 +17,6 @@ export class GatewayVeroController {
   @Get('/terminal/:serialNumber')
   async findOrderBySerialNumber(@Param('serialNumber') serialNumber: string) {
     const find = await this.gatewayVeroService.findBySerialNumber(serialNumber);
-    console.log({ find });
 
     return find;
   }
