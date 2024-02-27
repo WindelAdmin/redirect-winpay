@@ -5,7 +5,7 @@ import { winPay } from 'src/services/winpay';
 @Injectable()
 export class GatewayStoneService {
   async create(payload: any) {
-    return winPay()
+    const create = await winPay()
       .then((resolve) => resolve.post('/gateway-stone', payload))
       .then((response) => response.data)
       .catch((err) => {
@@ -18,6 +18,8 @@ export class GatewayStoneService {
           });
         }
       });
+    console.log('Criou stone: ', create);
+    return create;
   }
 
   async canceled(orderId: string) {

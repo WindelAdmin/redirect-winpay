@@ -5,7 +5,7 @@ import { winPay } from 'src/services/winpay';
 @Injectable()
 export class GatewayVeroService {
   async create(payload: any) {
-    return winPay()
+    const create = await winPay()
       .then((resolve) => resolve.post('/gateway-vero', payload))
       .then((response) => response.data)
       .catch((err) => {
@@ -18,6 +18,9 @@ export class GatewayVeroService {
           });
         }
       });
+
+    console.log('Criou vero: ', create);
+    return create;
   }
 
   async processing(orderId: string) {

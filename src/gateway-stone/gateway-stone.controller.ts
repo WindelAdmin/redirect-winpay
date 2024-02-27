@@ -1,12 +1,11 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateGatewayStoneDto } from './dto/create-gateway-stone.dto';
 import { GatewayStoneService } from './gateway-stone.service';
 
 @Controller('gateway-stone')
 export class GatewayStoneController {
   constructor(private readonly gatewayStoneService: GatewayStoneService) {}
   @Post()
-  create(@Body() createGatewayStoneDto: CreateGatewayStoneDto) {
+  create(@Body() createGatewayStoneDto: any) {
     return this.gatewayStoneService.create(createGatewayStoneDto);
   }
 
