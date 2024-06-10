@@ -3,7 +3,6 @@ import { winPay } from 'src/services/winpay';
 
 export class WebhookService {
   async recievePaymentStone(data: any) {
-    console.log('Recebido stone: ', JSON.stringify(data));
     const create = await winPay()
       .then((resolve) => resolve.post('/webhook/transactions/stone', data))
       .then((response) => response.data)
