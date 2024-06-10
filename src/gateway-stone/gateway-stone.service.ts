@@ -18,7 +18,7 @@ export class GatewayStoneService {
           });
         }
       });
-    console.log('Criou stone: ', JSON.stringify(create + payload));
+    console.log('Criou stone: ', create, JSON.stringify(payload, null, 4));
     return create;
   }
 
