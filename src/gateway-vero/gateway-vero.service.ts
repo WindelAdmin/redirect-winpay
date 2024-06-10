@@ -19,7 +19,7 @@ export class GatewayVeroService {
         }
       });
 
-    console.log('Criou vero: ', create, JSON.stringify(payload.null, 4));
+    console.log('Criou vero: ', create, JSON.stringify(payload, null, 4));
     return create;
   }
 
