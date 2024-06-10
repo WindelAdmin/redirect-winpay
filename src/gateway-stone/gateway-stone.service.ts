@@ -18,11 +18,12 @@ export class GatewayStoneService {
           });
         }
       });
-    console.log('Criou stone: ', create);
+    console.log('Criou stone: ', JSON.stringify(create + payload));
     return create;
   }
 
   async canceled(orderId: string) {
+    console.log('Cancelou stone: ', JSON.stringify(orderId));
     return winPay()
       .then((resolve) => resolve.get(`/gateway-stone/cancel/${orderId}`))
       .then((response) => response.data)
@@ -39,6 +40,7 @@ export class GatewayStoneService {
   }
 
   async findByOrder(orderId: string) {
+    console.log('Buscou stone: ', JSON.stringify(orderId));
     return winPay()
       .then((resolve) => resolve.get(`/gateway-stone/order/${orderId}`))
       .then((response) => response.data)

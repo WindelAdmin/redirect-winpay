@@ -19,11 +19,12 @@ export class GatewayVeroService {
         }
       });
 
-    console.log('Criou vero: ', create);
+    console.log('Criou vero: ', JSON.stringify(create + payload));
     return create;
   }
 
   async processing(orderId: string) {
+    console.log('Processando vero: ', orderId);
     return winPay()
       .then((resolve) =>
         resolve.get(`/gateway-vero/order/${orderId}/processing`),
@@ -42,6 +43,7 @@ export class GatewayVeroService {
   }
 
   async payed(orderId: string, data: any) {
+    console.log('Pago vero: ', orderId);
     return winPay()
       .then((resolve) =>
         resolve.post(`/gateway-vero/order/${orderId}/payed`, data),
@@ -60,6 +62,7 @@ export class GatewayVeroService {
   }
 
   async canceled(orderId: string) {
+    console.log('Cancelado vero: ', orderId);
     return winPay()
       .then((resolve) => resolve.get(`/gateway-vero/order/${orderId}/canceled`))
       .then((response) => response.data)
@@ -76,6 +79,7 @@ export class GatewayVeroService {
   }
 
   async failed(orderId: string, data: any) {
+    console.log('Falha vero: ', JSON.stringify(orderId + data));
     return winPay()
       .then((resolve) =>
         resolve.post(`/gateway-vero/order/${orderId}/failed`, data),
@@ -98,6 +102,7 @@ export class GatewayVeroService {
   }
 
   async findByOrder(orderId: string) {
+    console.log('Buscou vero: ', orderId);
     return winPay()
       .then((resolve) => resolve.get(`/gateway-vero/order/${orderId}`))
       .then((response) => response.data)
@@ -114,6 +119,7 @@ export class GatewayVeroService {
   }
 
   async findBySerialNumber(serialNumber: string) {
+    console.log('Buscou vero por serial: ', serialNumber);
     return winPay()
       .then((resolve) => resolve.get(`/gateway-vero/terminal/${serialNumber}`))
       .then((response) => response.data)
@@ -130,6 +136,7 @@ export class GatewayVeroService {
   }
 
   async findBySerialNumberProccessing(serialNumber: string) {
+    console.log('Buscou vero por serial processando: ', serialNumber);
     return winPay()
       .then((resolve) =>
         resolve.get(`/gateway-vero/terminal/processing/${serialNumber}`),
